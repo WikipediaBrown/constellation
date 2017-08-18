@@ -1,5 +1,5 @@
 {
-  "name": "GRPC Server",
+  "name": "grpc-server",
   "version": "0.0.1",
   "description": "This is a GRPC server that serves data to Fission cloud functions with iOS apps coming soon. Stay Tuned.",
   "author": "Perris Davis <Perris.Davis@CapitalOne.com>",
