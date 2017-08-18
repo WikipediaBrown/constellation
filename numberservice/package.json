@@ -1,7 +1,7 @@
 {
-  "name": "grpc-server",
+  "name": "number service",
   "version": "0.0.1",
-  "description": "This is a GRPC server that serves data to Fission cloud functions with iOS apps coming soon. Stay Tuned.",
+  "description": "This is the number service",
   "author": "Perris Davis <Perris.Davis@CapitalOne.com>",
   "main": "app.js",
   "scripts": {

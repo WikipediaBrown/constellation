@@ -8,10 +8,10 @@ const credentials = grpc.ServerCredentials.createInsecure()
 const localhost =  '0.0.0.0:'
 const port = (process.env.PORT || '8080')
 
-const listOfNames = ['Earl', 'Ole\' Greg', 'Seargant Slaughter', 'The Dark Knight', 'Gil']
+const listOfNames = ['Cool', 'Super\' Nerd', 'Lover, !Fighter', 'Sweet', 'Morose']
 
 // RPC functions
-const getNames = function(call, callback) {
+const GetPersonality = function(call, callback) {
 	console.log('GetNames Called')
 	const id = call.request.id;
 
@@ -27,11 +27,11 @@ const getNames = function(call, callback) {
 var grpcServer = new grpc.Server();
 
 // Prepair Names service and register names functions
-const namesService = people_proto.Names.service;
-const namesFunctions = {getNames: getNames}
+const personalityService = people_proto.GetPersonality.service;
+const personalityFunctions = {GetPersonality: GetPersonality}
 
 // add service and functions to server
-grpcServer.addService(namesService, namesFunctions);
+grpcServer.addService(personalityService, personalityFunctions);
 
 // Bind server to port and set credentials
 grpcServer.bind(localhost+port, credentials)

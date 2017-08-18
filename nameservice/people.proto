@@ -1,4 +1,3 @@
-// Syntax for the proto buffers. This is required.
 syntax = "proto3";
 
 
@@ -6,7 +5,8 @@ syntax = "proto3";
 // The first is a names service that takes a request with an id and gets a name.
 // The second is a number service that takes a request with an id and gets a number.
 // The thisd is a personality service that tells you the perosnality of an id.
-package information;
+
+package people;
 
 
 /////////
@@ -15,17 +15,17 @@ package information;
 
 // This is the names service
 service Names {
-	rpc GetNames (request) returns (name) {}
+	rpc GetNames (Request) returns (Name) {}
 }
 
 // This is the number service
-service Number {
-	rpc GetNumbers (request) returns (number) {}
+service GetBadgeNumber {
+	rpc GetBadgeNumber (Request) returns (BadgeNumber) {}
 }
 
 // This is the personality service
-service Personality {
-	rpc GetPersonality (request) returns (personality) {}
+service GetPersonality {
+	rpc GetPersonality (Request) returns (Personality) {}
 }
 
 /////////
@@ -33,21 +33,21 @@ service Personality {
 /////////
 
 // This is the request that all services use
-message request (
-	int64 id =1
-)
+message Request {
+	int64 id =1;
+}
 
 // This is the message the names service returns 
-message name (
-	string name =1
-)
+message Name {
+	string name =1;
+}
 
 // This is the message the number service returns 
-message number (
-	int64 number =1
-)
+message BadgeNumber {
+	int64 badgeNumber =1;
+}
 
 // This is the message the personality service returns 
-message personality (
-	string personality =1
-)
+message Personality {
+	string personality =1;
+}

@@ -8,17 +8,18 @@ const credentials = grpc.ServerCredentials.createInsecure()
 const localhost =  '0.0.0.0:'
 const port = (process.env.PORT || '8080')
 
-const listOfNames = ['Earl', 'Ole\' Greg', 'Seargant Slaughter', 'The Dark Knight', 'Gil']
+const listOfNumbers = [1234123, 234, 27, 502, 8989]
+
 
 // RPC functions
-const getNames = function(call, callback) {
-	console.log('GetNames Called')
+const getBadgeNumber = function(call, callback) {
+	console.log('getBadgeNumber Called')
 	const id = call.request.id;
 
 	if (id > 0 && id < 6) {
-		callback(null, listOfNames[randomNumber]);
+		callback(null, listOfNumbers[randomNumber - 1]);
 	} else {
-		callback(null, listOfNames[3]);
+		callback(null, listOfNumbers[3]);
 	}
 }
 
@@ -26,12 +27,12 @@ const getNames = function(call, callback) {
 // Create GRPC Server
 var grpcServer = new grpc.Server();
 
-// Prepair Names service and register names functions
-const namesService = people_proto.Names.service;
-const namesFunctions = {getNames: getNames}
+// Prepair Numbers service and register numbers functions
+const badgeNumberService = people_proto.GetBadgeNumber.service;
+const badgeNumberFunctions = {getBadgeNumber: getBadgeNumber}
 
-// add service and functions to server
-grpcServer.addService(namesService, namesFunctions);
+// Add service and functions to server
+grpcServer.addService(badgeNumberService, badgeNumberFunctions);
 
 // Bind server to port and set credentials
 grpcServer.bind(localhost+port, credentials)
