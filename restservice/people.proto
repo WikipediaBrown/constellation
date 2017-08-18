@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+
+// This package is called information because it provides information through three services.
+// The first is a names service that takes a request with an id and gets a name.
+// The second is a number service that takes a request with an id and gets a number.
+// The thisd is a personality service that tells you the perosnality of an id.
+
+package people;
+
+
+/////////
+// SERVICES
+/////////
+
+// This is the names service
+service Names {
+	rpc GetNames (Request) returns (Name) {}
+}
+
+// This is the number service
+service GetBadgeNumber {
+	rpc GetBadgeNumber (Request) returns (BadgeNumber) {}
+}
+
+// This is the personality service
+service GetPersonality {
+	rpc GetPersonality (Request) returns (Personality) {}
+}
+
+/////////
+// MESSAGES
+/////////
+
+// This is the request that all services use
+message Request {
+	int64 id =1;
+}
+
+// This is the message the names service returns 
+message Name {
+	string name =1;
+}
+
+// This is the message the number service returns 
+message BadgeNumber {
+	int64 badgeNumber =1;
+}
+
+// This is the message the personality service returns 
+message Personality {
+	string personality =1;
+}
