@@ -2,8 +2,8 @@ const grpc = require('grpc');
 
 const people_proto = grpc.load('./people.proto').people;
 const credentials = grpc.credentials.createInsecure()
-const localhost =  'localhost:'
-const port = (process.env.PORT || '8080')
+const localhost =  '192.168.99.100:'
+const port = (process.env.PORT || '31040')
 
 var namesClient = new people_proto.Names(localhost+port, credentials)
 

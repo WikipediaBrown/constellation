@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata: 
+  name: nameservice
+spec:
+  replicas: 3
+  template:
+    metadata:
+        labels:
+          app: nameservice
+          tier: backend
+          track: stable
+    spec:
+      containers:
+        - name: nameservice
+          image: "nameservice:1"
+          ports:
+            - name: nameservice
+              containerPort: 7070
