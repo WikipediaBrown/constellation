@@ -17,7 +17,7 @@ const getBadgeNumber = function(call, callback) {
 	const id = call.request.id;
 
 	if (id > 0 && id < 6) {
-		callback(null, listOfNumbers[randomNumber - 1]);
+		callback(null, listOfNumbers[id - 1]);
 	} else {
 		callback(null, listOfNumbers[3]);
 	}

@@ -6,7 +6,7 @@ const grpc = require('grpc');
 const people_proto = grpc.load('./people.proto').people;
 const credentials = grpc.ServerCredentials.createInsecure()
 const localhost =  '0.0.0.0:'
-const port = (process.env.PORT || '8080')
+const port = (process.env.PORT || '9090')
 
 const listOfNames = ['Cool', 'Super\' Nerd', 'Lover, !Fighter', 'Sweet', 'Morose']
 
@@ -16,7 +16,7 @@ const GetPersonality = function(call, callback) {
 	const id = call.request.id;
 
 	if (id > 0 && id < 6) {
-		callback(null, listOfNames[randomNumber]);
+		callback(null, listOfNames[id - 1]);
 	} else {
 		callback(null, listOfNames[3]);
 	}
